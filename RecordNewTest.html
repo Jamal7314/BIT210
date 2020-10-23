@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+	<link rel="stylesheet" href="CSS/style.css">
+	<script type="text/javascript" src="JavaScript/script.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+</head>
+<body class="bg-white text-black">
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+		<div class="container">
+
+			  <a class="navbar-brand" href="#">CTIS</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="myNavbar">
+			    <ul class="navbar-nav mr-auto w-100 justify-content-end">
+			      <li class="nav-item"><a class="nav-link" href="TesterPage.html">Home </a></li>
+			      <li class="nav-item"><a class="nav-link active" href="RecordNewTest.html">New Test<span class="sr-only">(current)</span></a></li>
+			      <li class="nav-item"><a class="nav-link" href="UpdateTestResult.html">Update Result</a></li>
+			      <li class="nav-item"><a class="nav-link" href="MainPage.html">LogOut</a></li>
+			    </ul>
+			  </div>
+	  </div>
+	</nav>
+
+	<div class="container my-3">
+		<div class="row justify-content-md-center">
+			<div class="btn-group col-xl-6 col-lg-6 col-md-10">
+    	       <button type="button" class="btn btn-outline-primary" id="btnNew">New Patient</button>
+
+	          <button type="button" class="btn btn-outline-primary" id="btnUpdate">Existing Patient</button>
+	  
+
+	        </div>
+		</div>
+	</div>
+    
+	
+
+    <div class="container">
+    	<div class="row">
+			<form class="newPatient mt-3 col-lg-9 col-md-9 col-11" action="" id="newPatient" onsubmit="" >
+				<h1 style="color:black">Record New Covid Test</h1>
+				<div class="form-group   ">
+					<label for="pUsername">Username:</label>
+					<input type="text" name="pUsername" id="pUsername" class="form-control" placeholder="Username">
+					<div class="error" id="usernameError"></div>
+				</div>
+				<div class="form-group ">
+					<label for="pPassword">Password:</label>
+				    <input type="password" name="pPassword" id="pPassword" class="form-control" placeholder="Password">
+				    <div class="error" id="passwordError"></div>
+				</div>
+				<div class="form-group">
+					<label for="pName">Name:</label>
+				    <input type="text" name="pName" id="pName" class="form-control" placeholder="Name" >
+				    <div class="error" id="nameError"></div>
+				</div>
+				<div class="form-group ">
+					<label for="pType">Patient Type</label>
+					<select name="pType" id="pType" class="form-control">
+						<option value="" >Select a Patient Type</option>
+						<option value="Returnee" >Returnee</option>
+						<option value="Quarantied" >Quarantied</option>
+						<option value="Close Contact" >Close Contact</option>
+						<option value="Infected" >Infected</option>
+						<option value="Suspected" >Suspected</option>
+				</select>
+				<div class="error" id="typeError"></div>
+				</div>
+				
+				<div class="form-group">
+					<label for="pSymptoms">Symptoms</label>
+				    <input type="text" name="pSymptoms" id="pSymptoms" class="form-control" placeholder="Symptoms">
+				
+		        </div>
+		        <div class="error" id="symptomsError"></div>
+		        <div>
+				<button type="button" class="btn btn-outline-primary btn-block mt-3 " id="btnAdd" onclick=" newTestFunction()" >Submit</button>
+				
+				</div>
+			</form>
+	</div>
+
+    <div class="container">
+    	<div class="row">
+			<form class="oldPatient mt-3 col-lg-9 col-md-9 col-12  " action="RecordNewTest.html" id="oldPatient" >
+				<h1  style="color:black">Record New Covid Test</h1>
+				<div class="form-group">
+					<label for="PName">Name:</label>
+				    <input type="text" name="PName" id="PName" class="form-control" placeholder="Name" >
+				    <div class="error" id="NameError"></div>
+				</div>
+				<div class="form-group ">
+					<label for="PType">Patient Type</label>
+					<select name="PType" id="PType" class="form-control" >
+						<option value="" >Select a Patient Type</option>
+						<option value="Returnee" >Returnee</option>
+						<option value="Quarantied" >Quarantied</option>
+						<option value="Close Contact" >Close Contact</option>
+						<option value="Infected" >Infected</option>
+						<option value="Suspected" >Suspected</option>
+				</select>
+				<div class="error" id="TypeErrorr"></div>
+				</div>
+				
+				<div class="form-group">
+					<label for="PSymptoms">Symptoms</label>
+				    <input type="text" name="PSymptoms" id="PSymptoms" class="form-control" placeholder="Symptoms" >
+				<div class="error" id="SymptomsError"></div>
+				</div>
+		        
+				<button type="button" class="btn btn-outline-primary btn-block mt-3 " id="btnAdd" onclick="newTestFunction2()">Submit</button>
+				
+				</div>
+			</form>
+
+
+	</div>
+
+	<div class="container mt-5">
+		
+		<div class="row">
+		    <div class="table-responsive">
+			<table id="testTable" class="col-12 table table table-hover table-striped table-bordered " >
+			  <thead>
+			    <tr class="text-white"  style="background-color:#23415c;">
+			      <th scope="col">Test ID</th>
+			      <th scope="col">Date</th>
+			      <th scope="col">Patient Name</th>
+			      <th scope="col">Patient Type</th>
+			      <th scope="col">Symptoms</th>
+			      <th scope="col">Status</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	
+			  </tbody>
+			</table>
+		    </div>
+		</div>
+	</div>
+    
+   
+	<footer class="footerSection bg-dark  mt-5" id="footerdiv">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-8 col-lg-8 col-md-6 col-12 footer-div">
+							<div>
+								<h3>About CTIS</h3>
+								<p>Covid Testing Information System (CTIS) allow the health ministry to keep
+		                        track of tests that have been performed by the various test centres. </p>
+							</div>
+						</div>
+
+						<div class="col-xl-4 col-lg-4 col-md-6 col-12 footer-div text-white">
+							<div>
+								<h3>Our Address</h3>
+								<address>
+				                <span>CTIS<br></span>123 Bukit Damansara<br>
+				                Kuala Lumpur, 50490<br>
+				                <span>Phone: <a href="tel:5555555555">(+60) 10-1111212</a></span>
+				                </address>
+								</div>
+							</div>
+						</div>
+					
+				</div>
+
+				<div class="mt-3 text-center">
+					<p>Copyright &copy; 2020 All rights reserved. Created in HELP University </p>
+					
+				</div>
+			</footer>
+			<script>
+				$(document).ready(function(){
+				  $("#btnNew").click(function(){
+				    $(".oldPatient").hide();
+				    $(".newPatient").show();
+				  });
+				  $("#btnUpdate").click(function(){
+				    $(".oldPatient").show();
+				    $(".newPatient").hide();
+				  });
+				});
+			</script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
